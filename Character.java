@@ -1,9 +1,7 @@
 abstract class Character {
-
+public static void main (String [] args){
 //Strength, Dexterity, Constitution
-    String str, dex, con = ("");
-    int 
-    
-
-    
+    String name;
+    int str, dex, con;
+}
 }
