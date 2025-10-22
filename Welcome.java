@@ -8,8 +8,10 @@ public class Welcome {
 
 
     String characterName = scan.nextLine();
-        System.out.println("Welcome " + characterName + "\nWhat's your race?" + "\n1.Human \n2.Elve \n3.Orc - Strong" );
-        
+     System.out.println("Welcome " + characterName + "\nWhat's your race?" + "\n1.Human - Average \n2.Elve - Fast \n3.Orc - Strong" );
+    
+     String race = scan.nextLine();
+
     }
     
 
