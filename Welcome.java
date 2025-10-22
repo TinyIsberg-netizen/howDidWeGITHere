@@ -2,6 +2,7 @@ import java.util.Scanner;
 import Recources.*;
 
 public class Welcome {
+    
     Orc myOrc = new Orc();
     Human myHuman = new Human();
     Elve myElve = new Elve();
@@ -13,11 +14,24 @@ public class Welcome {
 
     String characterName = scan.nextLine();
      System.out.println("Welcome " + characterName + "\nWhat's your race?" + "\n1.Human - Average \n2.Elve - Fast \n3.Orc - Strong" );
-    
-     String race = scan.nextLine();
-     System.out.println("Wow " + race + " you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
-        if (scan.nextLine() == race);
-            System.out.println();
+        String race = scan.nextLine();
+     
+        if (race.equals("Orc")){
+            System.out.println("You chose Orc");
+
+            
+        }else if(race.equals("Human")){
+            System.out.println("You chose Human");
+
+        }else if(race.equals("Elve")){
+            System.out.println("You chose Elve");
+            
+        }else{
+            System.out.println("Thats not a race, you silly goose!");
+        }
+
+        
+        System.out.println("Wow " + race + " ,you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
     }
     
 
