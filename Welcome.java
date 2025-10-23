@@ -22,7 +22,7 @@ public class Welcome {
     }
     while (!validRace) {
     
-    System.out.println("Welcome " + characterName + "\nWhat's your race?" + "\n1.Human - Average \n2.Elve - Fast \n3.Orc - Strong" );
+    System.out.println("Welcome " + characterName + "\nPlease enter one of the races below" + "\n1.Human - Average \n2.Elve - Fast \n3.Orc - Strong" );
         String race = scan.nextLine();
      
         if (race.equalsIgnoreCase("orc")){
