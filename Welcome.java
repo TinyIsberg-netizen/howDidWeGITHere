@@ -16,7 +16,7 @@ public class Welcome {
     boolean validRace = false;
     String characterName = scan.nextLine();
     while(!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")){
-        System.out.println("Hmmm that's not a string, Nice try Tom, try again :)");
+        System.out.println("Hmmm that's not a string. Nice try Tom, try again :)");
         characterName = scan.nextLine();
         
     }
