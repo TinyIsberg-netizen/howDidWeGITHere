@@ -3,6 +3,7 @@ import Recources.*;
 
 public class Welcome {
     
+
     Orc myOrc = new Orc();
     Human myHuman = new Human();
     Elve myElve = new Elve();
@@ -17,23 +18,25 @@ public class Welcome {
         String race = scan.nextLine();
      
         if (race.equals("Orc")){
-            System.out.println("You chose Orc");
+            System.out.println("You chose Orc" + "\nWow! Orc, you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
 
             
         }else if(race.equals("Human")){
-            System.out.println("You chose Human");
+            System.out.println("You chose Human" + "\nWow! Human, you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
 
         }else if(race.equals("Elve")){
-            System.out.println("You chose Elve");
+            System.out.println("You chose Elve" + "\nWow! Elve, you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
             
-        }else{
-            System.out.println("Thats not a race, you silly goose!");
+        }else{System.out.println("Thats not a race, you silly goose!");
+            
+        }
+
         }
 
         
-        System.out.println("Wow " + race + " ,you dont say!" + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
+        
     }
     
 
     
-}
+
