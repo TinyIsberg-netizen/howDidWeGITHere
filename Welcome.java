@@ -14,11 +14,11 @@ public class Welcome {
 
         boolean validRace = false;
         String characterName = scan.nextLine();
-        while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")) {
-            System.out.println("Hmmm that's not a string. Nice try Tom, try again");
+        while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+") || characterName.replaceAll("[^a-zA-ZåäöÅÄÖ]", "").length() < 2) {
+            System.out.println("Hmmm that's not a valid name. Try again!");
             characterName = scan.nextLine();
+}
 
-        }
         while (!validRace) {
 
             System.out.println("Welcome " + characterName + "\nPlease enter one of the races below"
