@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import Recources.*;
+import java.util.Scanner;
 
 public class Welcome {
 
