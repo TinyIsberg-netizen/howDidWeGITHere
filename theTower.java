@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Game {
+public class theTower {
 
     // Start the game after the player has chosen a name/race
     public void start(Scanner scan, String playerName) {
@@ -16,7 +16,7 @@ public class Game {
         System.out.println("• If you lose OR tie on any floor, you restart from Floor 1.\n");
 
         int yourDiceSides = 12;
-        int[] enemyDiceSides = {4, 6, 8, 20};
+        int[] enemyDiceSides = { 4, 6, 8, 20 };
 
         // Keep attempting until all four floors are cleared in one run
         while (true) {
@@ -30,7 +30,7 @@ public class Game {
                 scan.nextLine(); // wait for ENTER
 
                 int yourRoll = rand.nextInt(yourDiceSides) + 1; // 1..12
-                int enemyRoll = rand.nextInt(enemySides) + 1;   // 1..enemySides
+                int enemyRoll = rand.nextInt(enemySides) + 1; // 1..enemySides
 
                 System.out.println("You rolled:   " + yourRoll);
                 System.out.println("Enemy rolled: " + enemyRoll);
@@ -49,7 +49,8 @@ public class Game {
             }
 
             if (clearedAll) {
-                System.out.println("🏆 Congratulations, " + playerName + "! You cleared all 4 floors and rescued the target!");
+                System.out.println(
+                        "🏆 Congratulations, " + playerName + "! You cleared all 4 floors and rescued the target!");
                 break; // done
             } else {
                 System.out.println("🔁 Restarting from Floor 1. Be brave, " + playerName + "!\n");
@@ -57,4 +58,3 @@ public class Game {
         }
     }
 }
-
