@@ -15,14 +15,14 @@ public class Welcome {
         boolean validRace = false;
         String characterName = scan.nextLine();
         while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")) {
-            System.out.println("Hmmm that's not a string. Nice try Tom, try again :)");
+            System.out.println("Hmmm that's not a string. Nice try Tom, try again");
             characterName = scan.nextLine();
 
         }
         while (!validRace) {
 
             System.out.println("Welcome " + characterName + "\nPlease enter one of the races below"
-                    + "\n1.Human - Average \n2.Elve - Fast \n3.Orc - Strong");
+                    + "\nHuman - Average \nElve - Fast \nOrc - Strong");
             String race = scan.nextLine();
 
             if (race.equalsIgnoreCase("orc")) {
@@ -41,7 +41,13 @@ public class Welcome {
                 validRace = true;
 
             } else {
-                System.out.println("Thats not a race, you silly goose! Try Again.");
+                System.out.println("Thats not a race, you silly goose! Try Again." + "\n ");
+                try {
+                    Thread.sleep(1250);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
 
