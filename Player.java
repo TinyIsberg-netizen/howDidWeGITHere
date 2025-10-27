@@ -1,8 +1,5 @@
-package Recources;
-
 public class Player {
 
-    // Strength, Dexterity, Constitution
     String name;
     int dexterity;
     int strength;
@@ -20,7 +17,6 @@ public class Player {
         this.name = name;
 
     }
-
 
     public void attack(Enemy enemy) {
         enemy.takeDamage(attack);

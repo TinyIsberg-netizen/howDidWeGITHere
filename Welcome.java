@@ -1,11 +1,6 @@
-import Recources.*;
 import java.util.Scanner;
 
 public class Welcome {
-
-    Orc myOrc = new Orc();
-    Human myHuman = new Human();
-    Elve myElve = new Elve();
 
     public static void main(String[] args) {
 

@@ -1,4 +1,3 @@
-package Recources;
 
 public class Enemy {
     public String name;
