@@ -1,6 +1,6 @@
 package Recources;
 
-abstract class Character {
+public class Player {
 
     // Strength, Dexterity, Constitution
     String name;
@@ -13,13 +13,14 @@ abstract class Character {
     int xp = 0;
     int level = 1;
 
-    public Character(int dexterity, int strength, int constitution) {
+    public Player(int dexterity, int strength, int constitution) {
         this.dexterity = dexterity;
         this.strength = strength;
         this.constitution = constitution;
         this.name = name;
 
     }
+
 
     public void attack(Enemy enemy) {
         enemy.takeDamage(attack);
@@ -31,6 +32,12 @@ abstract class Character {
         health -= diceSize;
         System.out.println(name + " takes" + diceSize);
 
+    }
+
+    public void heal() {
+        int healAmount = 10;
+        health = Math.min(maxHealth, health + healAmount);
+        System.out.println(name + " heals for " + healAmount + " HP!");
     }
 
     public void gainXp(int amount) {

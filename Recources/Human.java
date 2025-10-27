@@ -1,7 +1,7 @@
 package Recources;
-public class Human extends Character {
+
+public class Human extends Player {
     public Human() {
-        super(2,2,2);
+        super(2, 2, 2);
     }
 }
-
