@@ -1,6 +1,7 @@
 public class Player {
 
     String name;
+    String race;
     int dexterity;
     int strength;
     int constitution;
@@ -11,10 +12,10 @@ public class Player {
     int level = 1;
 
     public Player(int dexterity, int strength, int constitution) {
-        this.dexterity = dexterity;
-        this.strength = strength;
-        this.constitution = constitution;
         this.name = name;
+        this.race = race;
+        this.level = 1;
+        this.xp = 0;
 
     }
 
