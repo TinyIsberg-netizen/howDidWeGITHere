@@ -22,13 +22,11 @@ public class Enemy {
 
     public void takeDamage(int damage) {
         health -= damage;
-        System.out.println(name + " takes " + damage + " damage!");
-        if (!isAlive()) {
-            System.out.println(name + " has been defeated!");
-        }
+
     }
 
     public String getStatus() {
         return name + " Health: " + health;
     }
+
 }
