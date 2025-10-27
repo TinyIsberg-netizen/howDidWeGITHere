@@ -12,10 +12,24 @@ public class Enemy {
     }
 
     public int rollDice() {
+
         return (int) (Math.random() * diceSize) + 1;
     }
+
+    public boolean isAlive() {
+        return health > 0;
+
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " takes " + damage + " damage!");
+        if (!isAlive()) {
+            System.out.println(name + " has been defeated!");
+        }
+    }
+
+    public String getStatus() {
+        return name + " Health: " + health;
+    }
 }
-/*
- * boolean kolla om enemy lever,
- * string getstatus
- */
