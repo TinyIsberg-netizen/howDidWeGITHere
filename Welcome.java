@@ -14,10 +14,11 @@ public class Welcome {
 
         boolean validRace = false;
         String characterName = scan.nextLine();
-        while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+") || characterName.replaceAll("[^a-zA-ZåäöÅÄÖ]", "").length() < 2) {
+        while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")
+                || characterName.replaceAll("[^a-zA-ZåäöÅÄÖ]", "").length() < 2) {
             System.out.println("Hmmm that's not a valid name. Try again!");
             characterName = scan.nextLine();
-}
+        }
 
         while (!validRace) {
 
@@ -52,6 +53,12 @@ public class Welcome {
             }
 
         }
+
+        Enemy rat = new Enemy("Ravenous Rat", 6, 10);
+        Enemy goblin = new Enemy("Shaman Goblin", 8, 20);
+        Enemy skeleton = new Enemy("Ancient Rambling Skeleton", 10, 30);
+        Enemy warlock = new Enemy("Wilbur the Warlock", 12, 40);
+        Enemy ogre = new Enemy("Demon Ogre", 20, 55);
 
     }
 
