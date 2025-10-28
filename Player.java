@@ -2,16 +2,13 @@ public class Player {
 
     String name;
     String race;
-    int dexterity;
-    int strength;
-    int constitution;
     int attack = 10;
     int maxHealth = 20;
     int health = maxHealth;
     int xp = 0;
     int level = 1;
 
-    public Player(int dexterity, int strength, int constitution) {
+    public Player(String name, String race) {
         this.name = name;
         this.race = race;
         this.level = 1;
