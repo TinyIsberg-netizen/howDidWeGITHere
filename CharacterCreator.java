@@ -2,19 +2,20 @@ import java.util.Scanner;
 
 public class CharacterCreator {
 
-    public static void main(String[] args) {
+    public Player createCharacter() {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("\u001B[1;32mWelcome brave hero to The Tower of Tom!\u001B[0m\nPlease enter your characters name:");
+        System.out.println(
+                "\u001B[1;32mWelcome brave hero to The Tower of Tom!\u001B[0m\nPlease enter your characters name:");
 
-        boolean validRace = false;
         String characterName = scan.nextLine();
         while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")
                 || characterName.replaceAll("[^a-zA-ZåäöÅÄÖ]", "").length() < 2) {
             System.out.println("\u001B[31mHmmm that's not a valid name. Try again!\u001B[0m");
             characterName = scan.nextLine();
         }
-
+        String playRace = "";
+        boolean validRace = false;
         while (!validRace) {
 
             System.out.println("Welcome " + characterName + "\nPlease enter one of the races below"
@@ -37,7 +38,7 @@ public class CharacterCreator {
                 validRace = true;
 
             } else {
-                    System.out.println("\u001B[31mThats not a race, you silly goose! Try Again.\u001B[0m\n ");
+                System.out.println("\u001B[31mThats not a race, you silly goose! Try Again.\u001B[0m\n ");
                 try {
                     Thread.sleep(1250);
 
@@ -55,6 +56,8 @@ public class CharacterCreator {
         Enemy warlock = new Enemy("Wilbur the Warlock", 12, 40);
         Enemy ogre = new Enemy("Demon Ogre", 20, 55);
 
+        // Create and return player
+        return new Player(characterName, playRace);
     }
 
 }
