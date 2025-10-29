@@ -29,7 +29,7 @@ public class Player {
     }
 
     public void heal() {
-        int healAmount = 10;
+        int healAmount = 5;
         health = Math.min(maxHealth, health + healAmount);
         System.out.println(name + " heals for " + healAmount + " HP!");
     }
@@ -41,7 +41,7 @@ public class Player {
             level++;
             maxHealth += 10;
             attack += 5;
-            health = maxHealth;
+            // health = maxHealth;
             System.out.println("Level up! You are now " + level + "!");
 
         }
@@ -54,7 +54,7 @@ public class Player {
     }
 
     public String getStatus() {
-        return name + " Health: " + "/" + maxHealth;
+        return name + " Health: " + health + "/" + maxHealth;
 
     }
 
