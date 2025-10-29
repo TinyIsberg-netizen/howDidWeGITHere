@@ -1,14 +1,14 @@
 public class Riddle {
-    private String question;
+    private String riddle;
     private String answer;
 
-    public Riddle(String question, String answer) {
-        this.question = question;
+    public Riddle(String riddle, String answer) {
+        this.riddle = riddle;
         this.answer = answer.toLowerCase();
     }
 
-    public String getQuestion() {
-        return question;
+    public String getRiddle() {
+        return riddle;
     }
 
     public boolean checkAnswer(String attempt) {
