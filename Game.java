@@ -12,7 +12,7 @@ public class Game {
     public void start() {
         // returns player object
         CharacterCreator creator = new CharacterCreator();
-        String Player = creator.createCharacter();
+        player = creator.createCharacter();
 
         System.out.println("\n=== Entering The Tower of Tom ===\n");
 
@@ -54,64 +54,74 @@ public class Game {
 
     }
 
-    private boolean fight(Player player, Enemy currentEnemy) {
-        while(player.isAlive() && currentEnemy.isAlive()){
+    private boolean fight(Player player, Enemy currentEnemy) { // fight current enemy on floor
+        while (player.isAlive() && currentEnemy.isAlive()) {
             System.out.println(player.getStatus() + " | " + currentEnemy.getStatus());
             System.out.println("(A)ttack or (H)eal");
             String action = scan.nextLine().toLowerCase();
 
-            if(action.equals("a")){
+            if (action.equals("a")) {
                 player.attack(currentEnemy);
-                
-            }else if (action.equals("h")){
+
+            } else if (action.equals("h")) {
                 player.heal();
-            }else{
+            } else {
                 System.out.println("Invalid choice. Try again");
                 continue;
             }
 
-            if (currentEnemy.isAlive()){
+            if (currentEnemy.isAlive()) {
                 int enemyDamage = currentEnemy.rollDice();
                 player.takeDamage(enemyDamage);
 
             }
-            if (player.isAlive()){
+            if (player.isAlive()) {
                 player.gainXp(20);
                 return true;
             } else {
                 return false;
             }
+
+        }
+        return player.isAlive();
     }
 
-    private boolean playWarlockRiddle(Enemy warlock) {
+    private boolean playWarlockRiddle(Enemy warlock) { // warlock riddle method
         System.out.println("You encounter a mysterius warlock");
         System.out.print("Do you wish to (1) fight or (2) answer my riddle");
-        int choice = scan.nextInt();
 
-        if (choice == 1) {
-            System.out.println("You have choosen poorly, get ready for a fight!");
+        int choice;
+        try {
+            choice = Integer.parseInt(scan.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("invalid input. Defaulting to riddle.");
+            choice = 2;
+        }
+        if (choice == 1) { // fight
+            System.out.println("You choose to fight me eh? Finally! I hope you put up a good fight!");
             return fight(player, warlock);
-        } else {
-            System.out.println("\nWilbur cackles: 'Heh Heh... Let's see if you can answer this!\n");
+
+        } else { // riddle
             Riddle riddle = new Riddle("What goes up but never comes down?", "age");
             System.out.println("Here is my riddle: " + riddle.getRiddle());
-            System.out.println("Think long and hard, you only get one try!");
-            String answer = scan.nextLine().toLowerCase();
+            System.out.print("Your answer: ");
+            String answer = scan.nextLine().trim().toLowerCase();
 
             if (riddle.checkAnswer(answer)) {
                 System.out.println("Hrmph! You are correct. You may pass on to the final level.");
+                player.gainXp(20);// reward for solving the riddle
                 return true;
             } else {
                 System.out.println(
                         "Hahahaha 'Wrong! OOOohh finally, i've been itching for a fight for many many years\nGet ready!");
                 return fight(player, warlock);
             }
+
         }
+
     }
 
-}
-
-    private boolean postLevelMenu() {
+    private boolean postLevelMenu() { // Post level menu
         while (true) {
             System.out.println("\n--- After Battle Menu ---");
             System.out.println("1. Continue climbing");
@@ -124,18 +134,19 @@ public class Game {
 
             switch (choice) {
                 case 1 -> {
-                    return true; // continue
+                    return true; // continue to next level
                 }
                 case 2 -> {
                     System.out.println(player); // print player info
                 }
                 case 3 -> {
-                    return false; // quit
+                    return false; // give up and leave tower
                 }
                 default -> {
                     System.out.println("Invalid choice, try again.");
                 }
             }
         }
+
     }
 }
