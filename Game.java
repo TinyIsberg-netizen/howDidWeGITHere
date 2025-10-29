@@ -66,6 +66,8 @@ public class Game {
             } else if (action.equals("h")) {
                 player.heal();
                 System.out.println("You healed");
+                int enemyDamage = currentEnemy.rollDice();
+                player.takeDamage(enemyDamage);
                 continue;
 
             } else {
@@ -78,23 +80,23 @@ public class Game {
                 player.takeDamage(enemyDamage);
 
             }
-            if (player.isAlive()) {
-                player.gainXp(20);
-                return true;
-            } else {
-                return false;
-            }
 
         }
-        return player.isAlive();
+        if (player.isAlive()) { // checks if player is alive
+            player.gainXp(20);
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private boolean playWarlockRiddle(Enemy warlock) { // warlock riddle method
         System.out.println("You encounter a mysterius warlock");
-        System.out.print("Do you wish to (1) fight or (2) answer my riddle");
+        System.out.println("Do you wish to (1) fight or (2) answer my riddle");
 
         int choice;
-        try {
+        try { // invalid input
             choice = Integer.parseInt(scan.nextLine().trim());
         } catch (NumberFormatException e) {
             System.out.println("invalid input. Defaulting to riddle.");
@@ -107,7 +109,7 @@ public class Game {
         } else { // riddle
             Riddle riddle = new Riddle("What goes up but never comes down?", "age");
             System.out.println("Here is my riddle: " + riddle.getRiddle());
-            System.out.print("Your answer: ");
+            System.out.println("Your answer: ");
             String answer = scan.nextLine().trim().toLowerCase();
 
             if (riddle.checkAnswer(answer)) {
@@ -133,7 +135,7 @@ public class Game {
             System.out.print("Your choice: ");
 
             int choice = scan.nextInt();
-            scan.nextLine(); // consume newline
+            scan.nextLine(); // scans next line
 
             switch (choice) {
                 case 1 -> {
@@ -143,7 +145,8 @@ public class Game {
                     System.out.println(player); // print player info
                 }
                 case 3 -> {
-                    return false; // give up and leave tower
+                    break; // give up and leave tower
+
                 }
                 default -> {
                     System.out.println("Invalid choice, try again.");
