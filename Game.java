@@ -65,6 +65,9 @@ public class Game {
 
             } else if (action.equals("h")) {
                 player.heal();
+                System.out.println("You healed");
+                continue;
+
             } else {
                 System.out.println("Invalid choice. Try again");
                 continue;

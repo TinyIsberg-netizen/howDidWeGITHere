@@ -24,7 +24,7 @@ public class Player {
 
     public void takeDamage(int diceSize) {
         health -= diceSize;
-        System.out.println(name + " takes" + diceSize);
+        System.out.println(name + " takes " + diceSize);
 
     }
 
@@ -36,7 +36,7 @@ public class Player {
 
     public void gainXp(int amount) {
         xp += amount;
-        System.out.println(name + " gain" + amount + " experience!");
+        System.out.println(name + " gain " + amount + " experience!");
         if (xp >= level * 50) {
             level++;
             maxHealth += 10;
