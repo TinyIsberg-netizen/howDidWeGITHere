@@ -145,7 +145,7 @@ public class Game {
                     System.out.println(player); // print player info
                 }
                 case 3 -> {
-                    break; // give up and leave tower
+                    return false; // give up and leave tower
 
                 }
                 default -> {
