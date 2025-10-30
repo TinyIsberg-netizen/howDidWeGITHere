@@ -29,23 +29,27 @@ public class CharacterCreator {
         boolean validRace = false;
         while (!validRace) {
 
-            System.out.println("Welcome " + characterName + "\nPlease enter one of the races below"
-                    + "\nHuman - Average \nElve - Fast \nOrc - Strong");
+            slowPrint("\u001B[1;32mNice to meet you \u001B[0m" + characterName + "\u001B[1;32m.\u001B[0m", 1500);
+            slowPrint("\u001B[1;32mCan you please tell me what heritage you stem from?\u001B[0m", 2000);
+            slowPrint("Human - Average \nElve - Fast \nOrc - Strong", 1500);
             String race = scan.nextLine();
 
             if (race.equalsIgnoreCase("orc")) {
-                System.out.println("You chose Orc" + "\nWow! Orc, you dont say!"
-                        + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
+                slowPrint("\u001B[1;32mOrc you say!\nWell that seems right, you do look like an Orc!"
+                        + " Haven't seen alot of your kind here!\nAnyway, good luck conquering the Tower.\u001B[0m",
+                        1500);
                 validRace = true;
 
             } else if (race.equalsIgnoreCase("human")) {
-                System.out.println("You chose Human" + "\nWow! Human, you dont say!"
-                        + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
+                slowPrint("\u001B[1;32mHuman you say!\nWell that seems right, you do look like a Human!"
+                        + " Haven't seen alot of your kind here!\nAnyway, good luck conquering the Tower.\u001B[0m",
+                        1500);
                 validRace = true;
 
             } else if (race.equalsIgnoreCase("elve")) {
-                System.out.println("You chose Elve" + "\nWow! Elve, you dont say!"
-                        + " Haven't seen alot of your kind here!\nAnyway, good luck not getting squished.");
+                slowPrint("\u001B[1;32mElve you say!\nWell that seems right, you do look like an Elve!"
+                        + " Haven't seen alot of your kind here!\nAnyway, good luck conquering the Tower.\u001B[0m",
+                        1500);
                 validRace = true;
 
             } else {

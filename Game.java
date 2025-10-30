@@ -45,7 +45,8 @@ public class Game {
             System.out.println("Floor " + floor + " cleared!\n");
 
             if (!postLevelMenu()) {
-                System.out.println("You decided to leave the tower. Thanks for playin!");
+                System.out
+                        .println("You decided to leave the tower. You are a coward and not worthy of conquering Tom!");
                 return;
             }
         }
@@ -154,5 +155,18 @@ public class Game {
             }
         }
 
+    }
+
+    public static void pause(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void slowPrint(String text, int delayMillis) {
+        System.out.println(text);
+        pause(delayMillis);
     }
 }
