@@ -5,8 +5,19 @@ public class CharacterCreator {
     public Player createCharacter() {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println(
-                "\u001B[1;32mWelcome brave hero to The Tower of Tom!\u001B[0m\nPlease enter your characters name:");
+
+        slowPrint(" ...... You feel someone shaking you carefully....", 2000);
+        slowPrint("...you open your eyes and see a strange figure looking down at you...", 2000);
+        slowPrint("\u001B[1;32m Who are you?...", 1500);
+        slowPrint("...What are you doing here?..", 2000);
+        slowPrint("Why do you look like you do not know who you are?\u001B[0m ", 2000);
+        slowPrint("So many questions, .... i do not really know who I am, maybe you can help me?.. ", 2000);
+        slowPrint("I just know that I am on a quest to rescue a princess from the Tower of Tom..", 2500);
+        slowPrint("\u001B[1;32m .... Well then you have come to the right place my dear.. This is the Tower of Tom..",
+                2000);
+        slowPrint("But let us first figure out who you are..\u001B[0m ", 2000);
+
+        slowPrint("\u001B[1;32m Can you tell me your name: \u001B[0m", 1700);
 
         String characterName = scan.nextLine();
         while (!characterName.matches("[a-zA-ZåäöÅÄÖ ]+")
@@ -60,4 +71,16 @@ public class CharacterCreator {
         return new Player(characterName, playRace);
     }
 
+    public static void pause(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void slowPrint(String text, int delayMillis) {
+        System.out.println(text);
+        pause(delayMillis);
+    }
 }
