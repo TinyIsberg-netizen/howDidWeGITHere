@@ -14,7 +14,7 @@ public class Game {
         CharacterCreator creator = new CharacterCreator();
         player = creator.createCharacter();
 
-        System.out.println("\n=== Entering The Tower of Tom ===\n");
+        System.out.println("\u001B[1;34m=== Entering The Tower of Tom ===\u001B[0m");
 
         Enemy[] enemies = {
                 new Enemy("Ravenous Rat", 6, 10),
@@ -25,7 +25,7 @@ public class Game {
         };
 
         for (int floor = 1; floor <= 5; floor++) {
-            System.out.println("=== Floor " + floor + " ===");
+            System.out.println("\u001B[34m=== Floor " + floor + " ===\u001B[0m");
 
             boolean survived;
 
@@ -34,31 +34,30 @@ public class Game {
 
             } else {
                 Enemy currentEnemy = enemies[floor - 1];
-                System.out.println("A wild " + currentEnemy.name + " appears!");
+                System.out.println("\u001B[1;35mA wild " + currentEnemy.name + " appears!\u001B[0m");
                 survived = fight(player, currentEnemy);
             }
             if (!survived) {
-                System.out.println("You were defeated! Game Over!");
+                System.out.println("\u001B[1;31mYou were defeated! Game Over!\u001B[0m");
                 return;
             }
 
-            System.out.println("Floor " + floor + " cleared!\n");
+                System.out.println("\u001B[33mFloor " + floor + " cleared!\n\u001B[0m");
 
             if (!postLevelMenu()) {
-                System.out
-                        .println("You decided to leave the tower. You are a coward and not worthy of conquering Tom!");
+                System.out.println("\u001B[32mYou decided to leave the tower. You are a coward and not worthy of conquering Tom!\u001B[0m");
                 return;
             }
         }
 
-        System.out.println("Congratulations, " + player.getName() + "! You conqured the Tower of Tom");
+        System.out.println("\u001B[1;32mCongratulations, " + player.getName() + "! You conqured the Tower of Tom\u001B[0m");
 
     }
 
     private boolean fight(Player player, Enemy currentEnemy) { // fight current enemy on floor
         while (player.isAlive() && currentEnemy.isAlive()) {
             System.out.println(player.getStatus() + " | " + currentEnemy.getStatus());
-            System.out.println("(A)ttack or (H)eal");
+            System.out.println("(\u001B[1;33mA\u001B[0m)ttack or (\u001B[1;33mH\u001B[0m)eal");
             String action = scan.nextLine().toLowerCase();
 
             if (action.equals("a")) {
@@ -66,13 +65,13 @@ public class Game {
 
             } else if (action.equals("h")) {
                 player.heal();
-                System.out.println("You healed");
+                System.out.println("\u001B[1;32mYou healed!\u001B[0m");
                 int enemyDamage = currentEnemy.rollDice();
                 player.takeDamage(enemyDamage);
                 continue;
 
             } else {
-                System.out.println("Invalid choice. Try again");
+                System.out.println("\u001B[1;31mInvalid choice. Try again\u001B[0m");
                 continue;
             }
 
@@ -93,14 +92,14 @@ public class Game {
     }
 
     private boolean playWarlockRiddle(Enemy warlock) { // warlock riddle method
-        System.out.println("You encounter a mysterius warlock");
+        System.out.println("\u001B[1;35mYou encounter a mysterius warlock\u001B[0m");
         System.out.println("Do you wish to (1) fight or (2) answer my riddle");
 
         int choice;
         try { // invalid input
             choice = Integer.parseInt(scan.nextLine().trim());
         } catch (NumberFormatException e) {
-            System.out.println("invalid input. Defaulting to riddle.");
+            System.out.println("\u001B[1;31minvalid input. Defaulting to riddle.\u001B[0m");
             choice = 2;
         }
         if (choice == 1) { // fight
@@ -108,18 +107,18 @@ public class Game {
             return fight(player, warlock);
 
         } else { // riddle
-            Riddle riddle = new Riddle("What goes up but never comes down?", "age");
-            System.out.println("Here is my riddle: " + riddle.getRiddle());
+            Riddle riddle = new Riddle("\u001B[1;35mWhat goes up but never comes down?", "age");
+            System.out.println("\u001B[35mHere is my riddle: " + riddle.getRiddle() + "\u001B[0m");
             System.out.println("Your answer: ");
             String answer = scan.nextLine().trim().toLowerCase();
 
             if (riddle.checkAnswer(answer)) {
-                System.out.println("Hrmph! You are correct. You may pass on to the final level.");
+                System.out.println("\u001B[1;32mHrmph! You are correct. You may pass!\u001B[0m");
                 player.gainXp(20);// reward for solving the riddle
                 return true;
             } else {
                 System.out.println(
-                        "Hahahaha 'Wrong! OOOohh finally, i've been itching for a fight for many many years\nGet ready!");
+                        "\\u001B[1;31mHahahaha 'Wrong! OOOohh finally, i've been itching for a fight for many many years\nGet ready!\u001B[0m");
                 return fight(player, warlock);
             }
 
@@ -129,7 +128,7 @@ public class Game {
 
     private boolean postLevelMenu() { // Post level menu
         while (true) {
-            System.out.println("\n--- After Battle Menu ---");
+            System.out.println("\u001B[1;36m--- After Battle Menu ---\u001B[0m");
             System.out.println("1. Continue climbing");
             System.out.println("2. View Character Sheet");
             System.out.println("3. Give up and leave the tower");
@@ -143,6 +142,7 @@ public class Game {
                     return true; // continue to next level
                 }
                 case 2 -> {
+                    System.out.println("\u001B[33m***Character Sheet***\u001B[0m");
                     System.out.println(player); // print player info
                 }
                 case 3 -> {
@@ -150,7 +150,7 @@ public class Game {
 
                 }
                 default -> {
-                    System.out.println("Invalid choice, try again.");
+                    System.out.println("\u001B[1;31mInvalid choice, try again.\u001B[0m");
                 }
             }
         }
