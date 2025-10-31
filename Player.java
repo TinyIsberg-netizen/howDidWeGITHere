@@ -18,13 +18,13 @@ public class Player {
 
     public void attack(Enemy enemy) {
         enemy.takeDamage(attack);
-        System.out.println(name + " attacked for " + attack);
+        System.out.println(name + " attacked for \u001B[1;32m" + attack + "\u001B[0m damage");
 
     }
 
     public void takeDamage(int diceSize) {
         health -= diceSize;
-        System.out.println(name + " takes " + diceSize);
+        System.out.println(name + " takes \u001B[1;31m" + diceSize + "\u001B[0m damage!");
 
     }
 
