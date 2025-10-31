@@ -14,10 +14,9 @@ public class Game {
         CharacterCreator creator = new CharacterCreator();
         player = creator.createCharacter();
 
-        System.out.println("\u001B[1;34m=== Entering The Tower of Tom ===\u001B[0m");
-        slowPrint("\n=== Entering The Tower of Tom ===", 1500);
+        slowPrint("\u001B[1;34m\n=== Entering The Tower of Tom ===", 1500);
         slowPrint("The ancient tower looms before you, shrouded in mystery...", 2000);
-        slowPrint("Steel yourself, brave hero. Your quest begins now.\n", 1500);
+        slowPrint("Steel yourself, brave hero. Your quest begins now.\u001B[0m", 1500);
 
         Enemy[] enemies = {
                 new Enemy("Ravenous Rat", 6, 10),
@@ -28,8 +27,7 @@ public class Game {
         };
 
         for (int floor = 1; floor <= 5; floor++) {
-            System.out.println("\u001B[34m=== Floor " + floor + " ===\u001B[0m");
-            System.out.println("\n=== Floor " + floor + " ===");
+            System.out.println("\u001B[35m\n=== Floor " + floor + " ===\u001B[0m");
 
             boolean survived;
 
@@ -38,44 +36,32 @@ public class Game {
 
             } else {
                 Enemy currentEnemy = enemies[floor - 1];
-                System.out.println("\u001B[1;35mA wild " + currentEnemy.name + " appears!\u001B[0m");
+                slowPrint("\u001B[1;35mYou hear something moving in the darkness...", 1500);
+                slowPrint("A wild " + currentEnemy.name + " appears!\u001B[0m", 2000);
                 survived = fight(player, currentEnemy);
+                
             }
             if (!survived) {
-                System.out.println("\u001B[1;31mYou were defeated! Game Over!\u001B[0m");
-                return;
-            }
-
-                System.out.println("\u001B[33mFloor " + floor + " cleared!\n\u001B[0m");
-
-            if (!postLevelMenu()) {
-                System.out.println("\u001B[32mYou decided to leave the tower. You are a coward and not worthy of conquering Tom!\u001B[0m");
-                slowPrint("You hear something moving in the darkness...", 1500);
-                slowPrint("A wild " + currentEnemy.name + " appears!", 2000);
-                survived = fight(player, currentEnemy);
-            }
-            if (!survived) {
-                slowPrint("You have been defeated...", 2000);
+                slowPrint("\u001B[1;31mYou have been defeated...", 2000);
                 slowPrint("Your vision fades to black...", 2000);
-                slowPrint("GAME OVER", 1500);
+                slowPrint("GAME OVER\u001B[0m", 1500);
                 return;
             }
-
-            slowPrint("Floor " + floor + " cleared! Well done, " + player.getName() + "!", 1500);
+            
+            slowPrint("\u001B[1;32mFloor " + floor + " cleared! Well done, " + player.getName() + "!\u001B[0m", 1500);
 
             if (!postLevelMenu()) {
-                slowPrint("You turn your back on the tower...", 1500);
-                slowPrint("You are not worthy of conquering Tom.", 2000);
+                slowPrint("\u001B[32mYou turn your back on the tower...", 1500);
+                slowPrint("You are not worthy of conquering Tom.\u001B[0m", 2000);
                 return;
             }
         }
 
-        System.out.println("\u001B[1;32mCongratulations, " + player.getName() + "! You conqured the Tower of Tom\u001B[0m");
         slowPrint("\n" + "=".repeat(50), 500);
-        slowPrint("🏆 VICTORY! 🏆", 2000);
+        slowPrint("\u001B[1;32m🏆 VICTORY! 🏆", 2000);
         slowPrint("Congratulations, " + player.getName() + "!", 1500);
         slowPrint("You have conquered the Tower of Tom!", 2000);
-        slowPrint("The princess is saved, and your name will be legend!", 2000);
+        slowPrint("The princess is saved, and your name will be legend!\u001B[0m", 2000);
         slowPrint("=".repeat(50) + "\n", 500);
 
     }
@@ -118,11 +104,9 @@ public class Game {
     }
 
     private boolean playWarlockRiddle(Enemy warlock) { // warlock riddle method
-        System.out.println("\u001B[1;35mYou encounter a mysterius warlock\u001B[0m");
-        System.out.println("Do you wish to (1) fight or (2) answer my riddle");
-        slowPrint("The air grows cold as you enter the chamber...", 1500);
+        slowPrint("\u001B[1;35mThe air grows cold as you enter the chamber...", 1500);
         slowPrint("You encounter a mysterious warlock!", 2000);
-        slowPrint("He grins wickedly and speaks:", 1500);
+        slowPrint("He grins wickedly and speaks:\u001B[0m", 1500);
         System.out.println("\nDo you wish to (1) fight or (2) answer my riddle?");
 
         int choice;
@@ -141,32 +125,20 @@ public class Game {
             System.out.println("\u001B[35mHere is my riddle: " + riddle.getRiddle() + "\u001B[0m");
             System.out.println("Your answer: ");
             String answer = scan.nextLine().trim().toLowerCase();
-
-            if (riddle.checkAnswer(answer)) {
-                System.out.println("\u001B[1;32mHrmph! You are correct. You may pass!\u001B[0m");
-                player.gainXp(20);// reward for solving the riddle
-                return true;
-            } else {
-                System.out.println(
-                        "\\u001B[1;31mHahahaha 'Wrong! OOOohh finally, i've been itching for a fight for many many years\nGet ready!\u001B[0m");
-            Riddle riddle = new Riddle("What goes up but never comes down?", "age");
-            slowPrint("Here is my riddle:", 1000);
-            System.out.println(riddle.getRiddle());
-            System.out.print("Your answer: ");
-            String answer = scan.nextLine().trim().toLowerCase();
-
-            if (riddle.checkAnswer(answer)) {
-                slowPrint("Hrmph! You are correct...", 1500);
-                slowPrint("The warlock grudgingly steps aside.", 1500);
-                slowPrint("You may pass to the final level.", 2000);
-                player.gainXp(20);// reward for solving the riddle
-                return true;
-            } else {
-                slowPrint("Hahahaha! Wrong!", 1500);
-                slowPrint("OOOohh finally, I've been itching for a fight for many years!", 1500);
-                slowPrint("Get ready!", 1500);
+        
+        if (riddle.checkAnswer(answer)) {
+            slowPrint("\u001B[1;32mHrmph! You are correct...", 1500);
+            slowPrint("The warlock grudgingly steps aside.", 1500);
+            slowPrint("You may pass to the final level.\u001B[0m", 2000);
+            player.gainXp(20);// reward for solving the riddle
+            return true;
+        } else {
+            slowPrint("\u001B[1;31mHahahaha! Wrong!", 1500);
+            slowPrint("OOOohh finally, I've been itching for a fight for many years!", 1500);
+            slowPrint("Get ready!\u001B[0m", 1500);
                 return fight(player, warlock);
             }
+            
 
         }
 
@@ -174,7 +146,7 @@ public class Game {
 
     private boolean postLevelMenu() { // Post level menu
         while (true) {
-            System.out.println("\u001B[1;36m--- After Battle Menu ---\u001B[0m");
+            System.out.println("\u001B[1;36m\n--- After Battle Menu ---\u001B[0m");
             System.out.println("1. Continue climbing");
             System.out.println("2. View Character Sheet");
             System.out.println("3. Give up and leave the tower");
@@ -188,7 +160,6 @@ public class Game {
                     return true; // continue to next level
                 }
                 case 2 -> {
-                    System.out.println("\u001B[33m***Character Sheet***\u001B[0m");
                     System.out.println(player); // print player info
                 }
                 case 3 -> {

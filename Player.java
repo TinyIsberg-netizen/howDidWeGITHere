@@ -65,12 +65,12 @@ public class Player {
     @Override
 
     public String toString() {
-        return "\n ***Character Sheet***\n" +
+        return "\u001B[1;36m\n ***Character Sheet***\n\u001B[0m" +
                 "Name: " + name +
                 "\nLevel: " + level +
                 "\nHP: " + health + "/" + maxHealth +
                 "\nAttack: " + attack +
-                "\nXP: " + xp + "\n";
+                "\nXP: " + xp;
     }
 
 }
