@@ -2,8 +2,8 @@ public class Player {
 
     String name;
     String race;
-    int attack = 10;
-    int maxHealth = 20;
+    int attack = 7;
+    int maxHealth = 25;
     int health = maxHealth;
     int xp = 0;
     int level = 1;
@@ -29,7 +29,7 @@ public class Player {
     }
 
     public void heal() {
-        int healAmount = 5;
+        int healAmount = 7;
         health = Math.min(maxHealth, health + healAmount);
         System.out.println(name + " heals for " + healAmount + " HP!");
     }
